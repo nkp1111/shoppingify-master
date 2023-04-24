@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
 
-import { ShoppingItem, ShoppingHistory } from '../../component'
+import { ShoppingItem, ShoppingHistory, ShoppingStats } from '../../component'
 
 const MainContent = () => {
   return (
@@ -9,7 +9,7 @@ const MainContent = () => {
       <Routes>
         <Route path="/" element={<ShoppingItem />} />
         <Route path="/history" element={<ShoppingHistory />} />
-        <Route path="/stat" />
+        <Route path="/stat" element={<ShoppingStats />} />
       </Routes>
     </div>
   )
