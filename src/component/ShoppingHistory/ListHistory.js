@@ -3,13 +3,16 @@ import { BsCalendarRange } from 'react-icons/bs'
 import { FaChevronRight } from 'react-icons/fa'
 import { format } from 'date-fns'
 
-import { foodHistory, groceryByMonth } from '../../utils'
+import { groceryByMonth } from '../../utils'
+import useGlobalContext from '../../context'
 
-const { formattedGrocery, timeline } = groceryByMonth(foodHistory)
 
-const ListHistory = ({ handleGroceryDetail }) => {
+const ListHistory = () => {
 
+  const { state: { foodHistory }, handleGroceryDetail } = useGlobalContext()
+  const { formattedGrocery, timeline } = groceryByMonth(foodHistory)
   const setGrocery = (grocery) => {
+    // calls handleGroceryDetail function and pass the grocery item
     handleGroceryDetail({ grocery })
   }
 

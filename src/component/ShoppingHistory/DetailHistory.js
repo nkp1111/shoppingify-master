@@ -4,12 +4,12 @@ import { CgArrowLongLeft } from 'react-icons/cg'
 import { format } from 'date-fns'
 
 import { foodByCategory } from '../../utils'
+import useGlobalContext from '../../context'
 
-const DetailHistory = ({ handleGroceryDetail, showGroceryDetail }) => {
-
+const DetailHistory = () => {
+  const { showGroceryDetail, handleGroceryDetail } = useGlobalContext()
   const { item } = showGroceryDetail
   const itemToShow = foodByCategory({ foodItems: item?.items })
-  console.log(itemToShow)
 
   return (
     <>

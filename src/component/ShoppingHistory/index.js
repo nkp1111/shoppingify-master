@@ -5,7 +5,7 @@ import ListHistory from './ListHistory'
 import DetailHistory from './DetailHistory'
 
 const Index = () => {
-  const { showGroceryDetail, handleGroceryDetail } = useGlobalContext()
+  const { showGroceryDetail } = useGlobalContext()
 
   return (
     <div className='main__content-items'>
@@ -14,10 +14,8 @@ const Index = () => {
       </div>
       <div className='items-body'>
         {!showGroceryDetail?.show
-          ? <ListHistory handleGroceryDetail={handleGroceryDetail} />
-          : <DetailHistory
-            handleGroceryDetail={handleGroceryDetail}
-            showGroceryDetail={showGroceryDetail} />}
+          ? <ListHistory />
+          : <DetailHistory />}
       </div>
 
     </div>

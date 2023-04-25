@@ -1,11 +1,15 @@
 import React from 'react'
 import { RxMagnifyingGlass, RxPlus } from 'react-icons/rx'
 
-import { foodItems, foodByCategory } from '../../utils'
+import { foodByCategory } from '../../utils'
+import useGlobalContext from '../../context'
 
-let itemsToShow = foodByCategory({ foodItems })
 
-const index = () => {
+const Index = () => {
+
+  const { state: { foodItems } } = useGlobalContext()
+  let itemsToShow = foodByCategory({ foodItems })
+
   return (
     <div className='main__content-items'>
       <div className="items-header d-flex">
@@ -48,9 +52,8 @@ const index = () => {
           </div>
         ))}
       </div>
-
     </div>
   )
 }
 
-export default index
+export default Index

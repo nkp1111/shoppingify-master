@@ -50,7 +50,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/nkp1111/shoppingify-master.git
 
 # Install dependencies
 $ npm install
@@ -64,6 +64,9 @@ $ npm start
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 - [Node.js](https://nodejs.org/)
 - React-icons
+- react-router-dom
+- recharts
+- date-fns
 
 ## Contact
 

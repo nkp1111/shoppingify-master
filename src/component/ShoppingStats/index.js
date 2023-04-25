@@ -1,32 +1,35 @@
 import React from 'react'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
-import { foodHistory, getTopItem, formatMonthlyData } from '../../utils'
+import { getTopItem, formatMonthlyData } from '../../utils'
+import useGlobalContext from '../../context'
 
-const { items, categories, topItems, topCategories, totalItem } = getTopItem(foodHistory)
 
 const getPercent = (count, total) => Math.floor(count / total * 100)
-// top items and categories
-const itemAndCats = [
-  { title: "Top items", items: items, top: topItems, customClass: "top-items" },
-  { title: "Top Categories", items: categories, top: topCategories, customClass: "top-cat" }
-]
 
-const formattedGrocery = formatMonthlyData(foodHistory)
+const Index = () => {
 
-const index = () => {
+  const { state: { foodHistory } } = useGlobalContext()
+  const { items, categories, topItems, topCategories, totalItem } = getTopItem(foodHistory)
+  // top items and categories
+  const itemAndCats = [
+    { title: "Top items", items: items, top3: topItems, customClass: "top-items" },
+    { title: "Top Categories", items: categories, top3: topCategories, customClass: "top-cat" }
+  ]
+  const formattedGrocery = formatMonthlyData(foodHistory)
+
   return (
     <div className='main__content-stats'>
       <div className='container'>
         <div className="row">
           {itemAndCats.map(data => {
-            const { title, items, customClass, top } = data
+            const { title, items, customClass, top3 } = data
 
             return (
               <article className={`col-sm-6 ${customClass}`} key={title}>
                 <h2>{title}</h2>
                 <ul>
-                  {top.map(item => {
+                  {top3.map(item => {
                     let percent = getPercent(items[item], totalItem)
                     return (
                       <li key={item} className='d-flex justify-content-between flex-wrap'>
@@ -60,4 +63,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
