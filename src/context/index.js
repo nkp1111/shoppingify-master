@@ -42,6 +42,11 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "REMOVE_CART_ITEM", payload: id })
   }
 
+  const itemStatusUpdate = (id, newStatus) => {
+    // change item status complete to not with id
+    dispatch({ type: "CART_ITEM_STATUS", payload: { id, newStatus } })
+  }
+
   useEffect(() => {
     // add shoppingList to local storage and update
     if (!localStorage.getItem("shoppingList")) {
@@ -81,6 +86,7 @@ const AppProvider = ({ children }) => {
         addItemToCart,
         updateItemQuantity,
         removeCartItem,
+        itemStatusUpdate,
       }}>
       {children}
     </AppContext.Provider>

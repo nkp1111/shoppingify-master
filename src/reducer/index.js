@@ -28,7 +28,8 @@ const reducer = (state, action) => {
         name: payload.name,
         category: payload.category,
         pieces: "1",
-        id: payload.id
+        id: payload.id,
+        done: false
       }
       const newCart = { ...state.cart, items: [...cartItems, newItem] }
       return { ...state, cart: newCart }
@@ -48,6 +49,16 @@ const reducer = (state, action) => {
     let oldCart = state.cart
     const restItems = oldCart.items.filter(item => item.id !== payload)
     return { ...state, cart: { ...oldCart, items: [...restItems] } }
+  }
+
+  if (type === "CART_ITEM_STATUS") {
+    const { id, newStatus } = payload
+    let oldCart = state.cart
+    const itemToUpdate = oldCart.items.filter(item => item.id === id)[0]
+    console.log(itemToUpdate)
+    const restItems = oldCart.items.filter(item => item.id !== id)
+    itemToUpdate.done = newStatus
+    return { ...state, cart: { ...oldCart, items: [...restItems, itemToUpdate] } }
   }
 
   return state
