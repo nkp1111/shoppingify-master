@@ -5,11 +5,11 @@ const foodHistory = [
     date: new Date(2023, 3, 20),
     status: "completed",
     items: [
-      { name: "Cheese", pieces: "2", category: "Dairy" },
-      { name: "Milk", pieces: "1", category: "Dairy" },
-      { name: "Oats", pieces: "1", category: "Grains" },
-      { name: "Rice", pieces: "1", category: "Grains" },
-      { name: "Chicken 1kg", pieces: "1", category: "Meat and Fish" },
+      { name: "Cheese", pieces: "2", category: "Dairy", id: 28 },
+      { name: "Milk", pieces: "1", category: "Dairy", id: 25 },
+      { name: "Oats", pieces: "1", category: "Grains", id: 20 },
+      { name: "Rice", pieces: "1", category: "Grains", id: 17 },
+      { name: "Chicken 1kg", pieces: "1", category: "Meat and Fish", id: 10 },
     ]
   },
   {
@@ -18,11 +18,11 @@ const foodHistory = [
     date: new Date(2023, 3, 7),
     status: "completed",
     items: [
-      { name: "Chocolate Chip Cookies", pieces: "3", category: "Cookies" },
-      { name: "Doris Truffle", pieces: "1", category: "Cookies" },
-      { name: "2 x soft drink 1.5 l", pieces: "2", category: "Beverages" },
-      { name: "Beer", pieces: "8", category: "Beverages" },
-      { name: "Cider", pieces: "6", category: "Beverages" },
+      { name: "Chocolate Chip Cookies", pieces: "3", category: "Cookies", id: 29 },
+      { name: "Doris Truffle", pieces: "1", category: "Cookies", id: 34 },
+      { name: "Soft drink", pieces: "2", category: "Beverages", id: 13 },
+      { name: "Beer", pieces: "8", category: "Beverages", id: 14 },
+      { name: "Cider", pieces: "6", category: "Beverages", id: 15 },
     ]
   },
   {
@@ -31,9 +31,9 @@ const foodHistory = [
     date: new Date(2023, 1, 20),
     status: "completed",
     items: [
-      { name: "Chocolate Chip Cookies", pieces: "3", category: "Cookies" },
-      { name: "Doris Truffle", pieces: "1", category: "Cookies" },
-      { name: "2 x soft drink 1.5 l", pieces: "5", category: "Beverages" },
+      { name: "Chocolate Chip Cookies", pieces: "3", category: "Cookies", id: 29 },
+      { name: "Doris Truffle", pieces: "1", category: "Cookies", id: 34 },
+      { name: "Soft drink", pieces: "5", category: "Beverages", id: 13 },
     ]
   },
   {
@@ -42,11 +42,11 @@ const foodHistory = [
     date: new Date(2023, 1, 17),
     status: "cancelled",
     items: [
-      { name: "Cheese", pieces: "2", category: "Dairy" },
-      { name: "Milk", pieces: "1", category: "Dairy" },
-      { name: "Oats", pieces: "1", category: "Grains" },
-      { name: "Rice", pieces: "1", category: "Grains" },
-      { name: "Chicken 1kg", pieces: "1", category: "Meat and Fish" },
+      { name: "Cheese", pieces: "2", category: "Dairy", id: 28 },
+      { name: "Milk", pieces: "1", category: "Dairy", id: 25 },
+      { name: "Oats", pieces: "1", category: "Grains", id: 20 },
+      { name: "Rice", pieces: "1", category: "Grains", id: 17 },
+      { name: "Chicken 1kg", pieces: "1", category: "Meat and Fish", id: 10 },
     ]
   },
   {
@@ -55,16 +55,16 @@ const foodHistory = [
     date: new Date(2022, 11, 31),
     status: "completed",
     items: [
-      { name: "Rice", pieces: "2", category: "Grains" },
-      { name: "Oats", pieces: "1", category: "Grains" },
-      { name: "Chicken 1kg", pieces: "5", category: "Meat and Fish" },
-      { name: "Chocolate Chip Cookies", pieces: "3", category: "Cookies" },
-      { name: "Doris Truffle", pieces: "1", category: "Cookies" },
-      { name: "2 x soft drink 1.5 l", pieces: "5", category: "Beverages" },
-      { name: "Beer", pieces: "8", category: "Beverages" },
-      { name: "Cider", pieces: "6", category: "Beverages" },
-      { name: "Pork fillets 450g", pieces: "8", category: "Meat and Fish" },
-      { name: "Ice cream", pieces: "20", category: "Dairy" },
+      { name: "Rice", pieces: "2", category: "Grains", id: 17 },
+      { name: "Oats", pieces: "1", category: "Grains", id: 20 },
+      { name: "Chicken 1kg", pieces: "5", category: "Meat and Fish", id: 10 },
+      { name: "Chocolate Chip Cookies", pieces: "3", category: "Cookies", id: 29 },
+      { name: "Doris Truffle", pieces: "1", category: "Cookies", id: 34 },
+      { name: "Soft drink", pieces: "5", category: "Beverages", id: 13 },
+      { name: "Beer", pieces: "8", category: "Beverages", id: 14 },
+      { name: "Cider", pieces: "6", category: "Beverages", id: 15 },
+      { name: "Pork fillets 450g", pieces: "8", category: "Meat and Fish", id: 11 },
+      { name: "Ice cream", pieces: "20", category: "Dairy", id: 26 },
     ]
   },
 ]
