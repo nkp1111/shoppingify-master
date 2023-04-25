@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useReducer, useEffect } from 'react'
+import React, { createContext, useContext, useReducer, useEffect } from 'react'
 
 import reducer from '../reducer'
 import { foodItems, foodHistory, expiredDate } from '../utils'
@@ -55,17 +55,6 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "ADD_CART_ITEM", payload: item })
   }
 
-  const [showGroceryDetail, setShowGroceryDetail] = useState({ show: false, item: null });
-  const handleGroceryDetail = ({ grocery }) => {
-    // show details if grocery item is given
-    // params: obj {grocery: <value>}
-    if (!grocery) {
-      setShowGroceryDetail({ show: false, item: null })
-    } else {
-      setShowGroceryDetail({ show: true, item: grocery })
-    }
-  }
-
   useEffect(() => {
     // update local storage every time cart item changes
     updateLocalStorage(state)
@@ -79,8 +68,6 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        showGroceryDetail,
-        handleGroceryDetail,
         state,
         addItemToCart,
       }}>

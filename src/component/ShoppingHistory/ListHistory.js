@@ -7,12 +7,11 @@ import { groceryByMonth } from '../../utils'
 import useGlobalContext from '../../context'
 
 
-const ListHistory = () => {
+const ListHistory = ({ handleGroceryDetail }) => {
 
-  const { state: { foodHistory }, handleGroceryDetail } = useGlobalContext()
+  const { state: { foodHistory } } = useGlobalContext()
   const { formattedGrocery, timeline } = groceryByMonth(foodHistory)
   const setGrocery = (grocery) => {
-    // calls handleGroceryDetail function and pass the grocery item
     handleGroceryDetail({ grocery })
   }
 
@@ -27,7 +26,7 @@ const ListHistory = () => {
               <div className='d-flex align-items-center'>
                 <BsCalendarRange className='calendar-icon' />
                 <span className="item-date">
-                  {format(gItem.date, "EEE d.M.yyy")}
+                  {format(new Date(gItem.date), "EEE d.M.yyy")}
                 </span>
                 <button className={`${gItem.status} btn`}>{gItem.status}</button>
                 <FaChevronRight className='forward-icon' onClick={(e) => setGrocery(gItem)} />

@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import useGlobalContext from '../../context'
 import ListHistory from './ListHistory'
 import DetailHistory from './DetailHistory'
 
 const Index = () => {
-  const { showGroceryDetail } = useGlobalContext()
+  const [showGroceryDetail, setShowGroceryDetail] = useState({ show: false, item: null });
+  const handleGroceryDetail = ({ grocery }) => {
+    // show details if grocery item is given
+    // params: obj {grocery: <value>}
+    if (!grocery) {
+      setShowGroceryDetail({ show: false, item: null })
+    } else {
+      setShowGroceryDetail({ show: true, item: grocery })
+    }
+  }
 
   return (
     <div className='main__content-items'>
@@ -14,8 +22,8 @@ const Index = () => {
       </div>
       <div className='items-body'>
         {!showGroceryDetail?.show
-          ? <ListHistory />
-          : <DetailHistory />}
+          ? <ListHistory handleGroceryDetail={handleGroceryDetail} />
+          : <DetailHistory {...{ showGroceryDetail, handleGroceryDetail }} />}
       </div>
 
     </div>
