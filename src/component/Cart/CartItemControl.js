@@ -4,7 +4,7 @@ import useGlobalContext from '../../context';
 
 const CartItemControl = ({ item, qtys }) => {
 
-  const { updateItemQuantity } = useGlobalContext()
+  const { updateItemQuantity, removeCartItem } = useGlobalContext()
   const [showQtyControl, setShowQtyControl] = useState(false);
 
   const handleQtyControl = (show) => {
@@ -18,7 +18,8 @@ const CartItemControl = ({ item, qtys }) => {
         ? (
           <div className='bg-white d-flex align-items-center justify-content-between gap-1'>
             <div>
-              <AiOutlineDelete className='delete-icon' />
+              <AiOutlineDelete className='delete-icon'
+                onClick={() => removeCartItem(item.id)} />
             </div>
             <AiOutlineMinus onClick={(e) => {
               if (qty > 1) {

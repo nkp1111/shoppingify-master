@@ -33,7 +33,13 @@ const AppProvider = ({ children }) => {
   }
 
   const updateItemQuantity = ({ id, qty }) => {
+    // takes id of item to update with new quantity
     dispatch({ type: "UPDATE_CART_QTY", payload: { id, qty } })
+  }
+
+  const removeCartItem = (id) => {
+    // removes an item from cart
+    dispatch({ type: "REMOVE_CART_ITEM", payload: id })
   }
 
   useEffect(() => {
@@ -74,6 +80,7 @@ const AppProvider = ({ children }) => {
         state,
         addItemToCart,
         updateItemQuantity,
+        removeCartItem,
       }}>
       {children}
     </AppContext.Provider>

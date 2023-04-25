@@ -44,6 +44,12 @@ const reducer = (state, action) => {
     return { ...state, cart: { ...oldCart, items: [...restItems, itemToUpdate] } }
   }
 
+  if (type === "REMOVE_CART_ITEM") {
+    let oldCart = state.cart
+    const restItems = oldCart.items.filter(item => item.id !== payload)
+    return { ...state, cart: { ...oldCart, items: [...restItems] } }
+  }
+
   return state
 }
 
