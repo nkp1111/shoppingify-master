@@ -4,9 +4,13 @@ import { images } from '../../utils'
 import SearchForm from './SearchForm'
 import CartItems from './CartItems'
 import "./cart.css"
+import useGlobalContext from '../../context'
 
-const index = ({ cartItem }) => {
-  const emptyCart = cartItem.length === 0
+const Index = () => {
+
+  const { state } = useGlobalContext()
+  const emptyCart = state?.cart?.items?.length === 0
+
   return (
     <section className='main__sidebar-cart h-100'>
       <div className={`cart d-flex flex-column align-items-center h-100`}>
@@ -28,9 +32,9 @@ const index = ({ cartItem }) => {
               alt="lady with cart"
               className='position-absolute' />
           </div>
-          : <CartItems />}
+          : <CartItems state={state} />}
 
-        <div className="cart-footer">
+        <div className="cart-footer mt-auto">
           <SearchForm empty={emptyCart} />
         </div>
       </div>
@@ -38,4 +42,4 @@ const index = ({ cartItem }) => {
   )
 }
 
-export default index
+export default Index

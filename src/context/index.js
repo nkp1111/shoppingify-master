@@ -51,7 +51,7 @@ const AppProvider = ({ children }) => {
 
 
   const addItemToCart = (item) => {
-    // add item id to cart
+    // add item id to cart and update local storage
     dispatch({ type: "ADD_CART_ITEM", payload: item })
   }
 
@@ -65,6 +65,11 @@ const AppProvider = ({ children }) => {
       setShowGroceryDetail({ show: true, item: grocery })
     }
   }
+
+  useEffect(() => {
+    // update local storage every time cart item changes
+    updateLocalStorage(state)
+  }, [state.cart.items]);
 
   useEffect(() => {
     // to check state changes on development
