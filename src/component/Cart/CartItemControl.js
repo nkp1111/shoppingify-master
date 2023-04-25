@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineDelete } from 'react-icons/ai'
+import useGlobalContext from '../../context';
 
 const CartItemControl = ({ item, qtys }) => {
+
+  const { updateItemQuantity } = useGlobalContext()
   const [showQtyControl, setShowQtyControl] = useState(false);
 
   const handleQtyControl = (show) => {
@@ -17,9 +20,13 @@ const CartItemControl = ({ item, qtys }) => {
             <div>
               <AiOutlineDelete className='delete-icon' />
             </div>
-            <AiOutlineMinus />
+            <AiOutlineMinus onClick={(e) => {
+              if (qty > 1) {
+                updateItemQuantity({ id: item.id, qty: +qty - 1 })
+              }
+            }} />
             <ControlButton {...{ qty, handleQtyControl, showQtyControl }} />
-            <AiOutlinePlus />
+            <AiOutlinePlus onClick={(e) => updateItemQuantity({ id: item.id, qty: +qty + 1 })} />
           </div>
         )
         : <ControlButton {...{ qty, handleQtyControl, showQtyControl }} />}

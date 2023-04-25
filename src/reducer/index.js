@@ -35,6 +35,15 @@ const reducer = (state, action) => {
     }
   }
 
+  if (type === "UPDATE_CART_QTY") {
+    const { id, qty } = payload
+    let oldCart = state.cart
+    const itemToUpdate = oldCart.items.filter(item => item.id === id)[0]
+    const restItems = oldCart.items.filter(item => item.id !== id)
+    itemToUpdate.pieces = qty
+    return { ...state, cart: { ...oldCart, items: [...restItems, itemToUpdate] } }
+  }
+
   return state
 }
 

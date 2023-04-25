@@ -27,18 +27,27 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "UPDATE_LOCAL_STORAGE", payload: state })
   }
 
+  const addItemToCart = (item) => {
+    // add item to cart and update local storage
+    dispatch({ type: "ADD_CART_ITEM", payload: item })
+  }
+
+  const updateItemQuantity = ({ id, qty }) => {
+    dispatch({ type: "UPDATE_CART_QTY", payload: { id, qty } })
+  }
+
   useEffect(() => {
     // add shoppingList to local storage and update
     if (!localStorage.getItem("shoppingList")) {
       // if there is no shopping list on local storage
       updateLocalStorage(state)
     } else {
-      // else there is shopping list
+      // if there is shopping list
       const oldState = JSON.parse(localStorage.getItem("shoppingList"))
 
       let oldDate = new Date(oldState?.cart?.date)
       if (oldDate && expiredDate({ oldDate, todayDate })) {
-        // if cart is 24 hrs old date not match
+        // if cart's date not match to current date
         // empty cart to shopping history and update local storage
         dispatch({ type: "EMPTY_CART", payload: oldState })
         updateLocalStorage(state)
@@ -48,12 +57,6 @@ const AppProvider = ({ children }) => {
       }
     }
   }, []);
-
-
-  const addItemToCart = (item) => {
-    // add item id to cart and update local storage
-    dispatch({ type: "ADD_CART_ITEM", payload: item })
-  }
 
   useEffect(() => {
     // update local storage every time cart item changes
@@ -70,6 +73,7 @@ const AppProvider = ({ children }) => {
       value={{
         state,
         addItemToCart,
+        updateItemQuantity,
       }}>
       {children}
     </AppContext.Provider>
