@@ -7,7 +7,7 @@ import useGlobalContext from '../../context'
 
 const Index = () => {
 
-  const { state: { foodItems } } = useGlobalContext()
+  const { state: { foodItems }, addItemToCart } = useGlobalContext()
   let itemsToShow = foodByCategory({ foodItems })
 
   return (
@@ -31,19 +31,20 @@ const Index = () => {
       </div>
 
       <div className='items-show'>
-        {Object.keys(itemsToShow).map(item => (
-          <div key={item}>
+        {Object.keys(itemsToShow).map(category => (
+          <div key={category}>
             {/* food category  */}
-            <h2>{item}</h2>
+            <h2>{category}</h2>
             <div className="container">
               <div className="row">
-                {itemsToShow[item].map(item => (
+                {itemsToShow[category].map(item => (
                   <div key={item.id}
                     className='col-lg-3 col-md-4 col-6'>
                     {/* food product  */}
                     <div className="card flex-row align-items-center justify-content-between">
                       <p>{item.name}</p>
-                      <p><RxPlus className='plus-icon' /></p>
+                      <p><RxPlus className='plus-icon'
+                        onClick={(e) => addItemToCart(item)} /></p>
                     </div>
                   </div>
                 ))}
