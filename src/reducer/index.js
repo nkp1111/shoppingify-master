@@ -10,11 +10,19 @@ const reducer = (state, action) => {
   }
 
   if (type === "EMPTY_CART") {
-    let oldCart = payload.cart
+    const todayDate = new Date()
+    let oldCart = state.cart
+    oldCart.status = payload
     const newState = {
       ...state,
-      foodItems: [...payload.foodItems],
-      foodHistory: [...payload.foodHistory, oldCart]
+      foodHistory: [...state.foodHistory, oldCart],
+      cart: {
+        id: todayDate.getTime(),
+        name: "Shopping List",
+        date: todayDate,
+        status: "unknown",
+        items: [],
+      }
     }
     return newState
   }
@@ -58,6 +66,12 @@ const reducer = (state, action) => {
     const restItems = oldCart.items.filter(item => item.id !== id)
     itemToUpdate.done = newStatus
     return { ...state, cart: { ...oldCart, items: [...restItems, itemToUpdate] } }
+  }
+
+  if (type === "CART_NAME_UPDATE") {
+    const oldCart = state.cart
+    oldCart.name = payload
+    return { ...state, cart: oldCart }
   }
 
   return state

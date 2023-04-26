@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react'
 
 import reducer from '../reducer'
-import { foodItems, foodHistory, expiredDate } from '../utils'
+import { foodItems, foodHistory } from '../utils'
 
 const todayDate = new Date()
 // initial default state
@@ -47,6 +47,18 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "CART_ITEM_STATUS", payload: { id, newStatus } })
   }
 
+  const changeCartName = (name) => {
+    // change cart name
+    dispatch({ type: "CART_NAME_UPDATE", payload: name })
+    updateLocalStorage(state)
+  }
+
+  const shoppingEnded = (result) => {
+    // after shopping ended update status and empty cart
+    dispatch({ type: "EMPTY_CART", payload: result })
+    updateLocalStorage(state)
+  }
+
   useEffect(() => {
     // add shoppingList to local storage and update
     if (!localStorage.getItem("shoppingList")) {
@@ -55,17 +67,7 @@ const AppProvider = ({ children }) => {
     } else {
       // if there is shopping list
       const oldState = JSON.parse(localStorage.getItem("shoppingList"))
-
-      let oldDate = new Date(oldState?.cart?.date)
-      if (oldDate && expiredDate({ oldDate, todayDate })) {
-        // if cart's date not match to current date
-        // empty cart to shopping history and update local storage
-        dispatch({ type: "EMPTY_CART", payload: oldState })
-        updateLocalStorage(state)
-      } else {
-        // if cart is less than 24 hrs old
-        dispatch({ type: "UPDATE_CURRENT_STATE", payload: oldState })
-      }
+      dispatch({ type: "UPDATE_CURRENT_STATE", payload: oldState })
     }
   }, []);
 
@@ -87,6 +89,8 @@ const AppProvider = ({ children }) => {
         updateItemQuantity,
         removeCartItem,
         itemStatusUpdate,
+        shoppingEnded,
+        changeCartName,
       }}>
       {children}
     </AppContext.Provider>

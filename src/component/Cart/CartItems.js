@@ -1,15 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { HiPencil, HiCheck } from 'react-icons/hi'
 
 import { foodByCategory } from '../../utils'
 import CartItemControl from './CartItemControl'
 import useGlobalContext from '../../context'
 
-const CartItems = ({ state: { cart, foodItems } }) => {
+const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit }) => {
 
-  const [showEdit, setShowEdit] = useState(false);
   const headingRef = useRef();
-  const { itemStatusUpdate } = useGlobalContext()
+  const { itemStatusUpdate, changeCartName } = useGlobalContext()
 
   const getCartItem = () => {
     // filter all items to get cart items
@@ -47,11 +46,18 @@ const CartItems = ({ state: { cart, foodItems } }) => {
     headingRef.current.focus()
   }, [showEdit]);
 
+  useEffect(() => {
+    const newCartName = headingRef.current.innerText
+    if (newCartName !== cart.name) {
+      changeCartName(newCartName)
+    }
+  });
+
   return (
     <section className='main__cart-items w-100'>
       <div className='cart-title d-flex align-items-center justify-content-between'>
         <h2 className='me-1'
-          ref={headingRef}>Shopping list</h2>
+          ref={headingRef}>{cart.name}</h2>
         <span><HiPencil className='pencil-icon'
           onClick={() => setShowEdit(!showEdit)} /></span>
       </div>
@@ -70,7 +76,8 @@ const CartItems = ({ state: { cart, foodItems } }) => {
                         onChange={(e) => itemStatusUpdate(item.id, !cartItemStatus[item.id])} />
                       {/* custom checkbox  */}
                       <span className='fake-input'>
-                        <HiCheck className='check-icon' />
+                        <HiCheck
+                          className={`check-icon ${cartItemStatus[item.id] ? "d-block" : "d-none"}`} />
                       </span>
                     </div>
                   )}

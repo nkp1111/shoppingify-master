@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { images } from '../../utils'
 import SearchForm from './SearchForm'
@@ -8,7 +8,8 @@ import useGlobalContext from '../../context'
 
 const Index = () => {
 
-  const { state } = useGlobalContext()
+  const [showEdit, setShowEdit] = useState(false);
+  const { state, shoppingEnded } = useGlobalContext()
   const emptyCart = state?.cart?.items?.length === 0
 
   return (
@@ -32,10 +33,20 @@ const Index = () => {
               alt="lady with cart"
               className='position-absolute' />
           </div>
-          : <CartItems state={state} />}
+          : <CartItems state={state} showEdit={showEdit} setShowEdit={setShowEdit} />}
 
         <div className="cart-footer mt-auto">
-          <SearchForm empty={emptyCart} />
+          {showEdit
+            ? (
+              <div className='btn-holder d-flex'>
+                <button className="btn"
+                  onClick={() => shoppingEnded("cancelled")}>cancel</button>
+                <button className="btn"
+                  onClick={() => shoppingEnded("completed")}>Complete</button>
+              </div>
+            )
+            : <SearchForm empty={emptyCart} />}
+
         </div>
       </div>
     </section>

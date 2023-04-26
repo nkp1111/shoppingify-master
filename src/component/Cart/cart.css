@@ -1,3 +1,12 @@
+.main__cart-items {
+  height: 100%;
+  overflow: scroll;
+}
+
+.main__cart-items::-webkit-scrollbar {
+  display: none;
+}
+
 .empty-cart-display {
   flex: 1;
   display: flex;
@@ -24,10 +33,5 @@
 }
 
 .check-icon {
-  display: none;
-}
-
-.cart-items input[type="checkbox"]:checked+span .check-icon {
-  display: block;
   color: var(--bright-yellow);
 }
