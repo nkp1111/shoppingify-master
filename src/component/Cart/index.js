@@ -8,6 +8,7 @@ import "./cart.css"
 
 const Cart = () => {
 
+  const [searchTerm, setSearchTerm] = useState("");
   const [showEdit, setShowEdit] = useState(false);
   const { state, shoppingEnded, setShowAddItemForm, setShowModal } = useGlobalContext()
   const emptyCart = state?.cart?.items?.length === 0
@@ -41,7 +42,7 @@ const Cart = () => {
               className='position-absolute' />
           </div>
         )
-        : <CartItems state={state} showEdit={showEdit} setShowEdit={setShowEdit} />}
+        : <CartItems state={state} showEdit={showEdit} setShowEdit={setShowEdit} searchTerm={searchTerm} />}
 
       <div className="cart-footer mt-auto">
         {showEdit
@@ -53,7 +54,7 @@ const Cart = () => {
                 onClick={() => shoppingEnded("completed")}>Complete</button>
             </div>
           )
-          : <SearchForm empty={emptyCart} />}
+          : <SearchForm empty={emptyCart} {...{ searchTerm, setSearchTerm }} />}
       </div>
     </div>
   )

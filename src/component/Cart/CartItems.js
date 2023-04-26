@@ -5,7 +5,7 @@ import { foodByCategory } from '../../utils'
 import CartItemControl from './CartItemControl'
 import useGlobalContext from '../../context'
 
-const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit }) => {
+const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit, searchTerm }) => {
 
   const headingRef = useRef();
   const { itemStatusUpdate, changeCartName } = useGlobalContext()
@@ -70,7 +70,9 @@ const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit }) => {
             <p className='cart__items-category'>{category}</p>
             <div className="d-flex flex-column">
               {cartItemsByCategory[category].map(item => (
-                <div className='d-flex align-items-center' key={item.id}>
+                <div
+                  className={`d-flex align-items-center search-${searchTerm && item.name.toLowerCase().match(searchTerm.toLowerCase()) && "match"}`}
+                  key={item.id}>
                   {showEdit && (
                     <div className='position-relative input-holder'>
                       {/* change single shopping item status  */}
