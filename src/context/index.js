@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react'
+import React, { createContext, useContext, useReducer, useEffect, useState } from 'react'
 
 import reducer from '../reducer'
 import { foodItems, foodHistory } from '../utils'
@@ -21,6 +21,8 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [showItemDetail, setShowItemDetail] = useState({ show: false, item: null });
+  const [showAddItemForm, setShowAddItemForm] = useState(false);
 
   const updateLocalStorage = (state) => {
     // update local storage with new state values
@@ -91,6 +93,10 @@ const AppProvider = ({ children }) => {
         itemStatusUpdate,
         shoppingEnded,
         changeCartName,
+        showItemDetail,
+        setShowItemDetail,
+        showAddItemForm,
+        setShowAddItemForm,
       }}>
       {children}
     </AppContext.Provider>
