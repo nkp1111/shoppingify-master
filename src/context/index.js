@@ -23,6 +23,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [showItemDetail, setShowItemDetail] = useState({ show: false, item: null });
   const [showAddItemForm, setShowAddItemForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const updateLocalStorage = (state) => {
     // update local storage with new state values
@@ -58,6 +59,7 @@ const AppProvider = ({ children }) => {
   const shoppingEnded = (result) => {
     // after shopping ended update status and empty cart
     dispatch({ type: "EMPTY_CART", payload: result })
+    setShowModal(false)
     updateLocalStorage(state)
   }
 
@@ -105,6 +107,8 @@ const AppProvider = ({ children }) => {
         showAddItemForm,
         setShowAddItemForm,
         addNewItem,
+        showModal,
+        setShowModal,
       }}>
       {children}
     </AppContext.Provider>

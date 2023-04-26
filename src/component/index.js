@@ -4,3 +4,5 @@ export { default as ShoppingStats } from "./ShoppingStats"
 
 export { default as Cart } from "./Cart"
 export { default as SidebarItem } from "./SidebarItem"
+
+export { default as Modal } from "./Modal"

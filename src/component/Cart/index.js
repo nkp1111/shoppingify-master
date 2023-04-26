@@ -9,7 +9,7 @@ import "./cart.css"
 const Cart = () => {
 
   const [showEdit, setShowEdit] = useState(false);
-  const { state, shoppingEnded, setShowAddItemForm } = useGlobalContext()
+  const { state, shoppingEnded, setShowAddItemForm, setShowModal } = useGlobalContext()
   const emptyCart = state?.cart?.items?.length === 0
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Cart = () => {
           ? (
             <div className='btn-holder d-flex'>
               <button className="btn"
-                onClick={() => shoppingEnded("cancelled")}>cancel</button>
+                onClick={() => setShowModal(true)}>cancel</button>
               <button className="btn"
                 onClick={() => shoppingEnded("completed")}>Complete</button>
             </div>
