@@ -74,6 +74,13 @@ const reducer = (state, action) => {
     return { ...state, cart: oldCart }
   }
 
+  if (type === "ADD_NEW_ITEM") {
+    return {
+      ...state,
+      foodItems: [...state.foodItems, payload]
+    }
+  }
+
   return state
 }
 
