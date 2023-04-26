@@ -58,8 +58,10 @@ const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit }) => {
       <div className='cart-title d-flex align-items-center justify-content-between'>
         <h2 className='me-1'
           ref={headingRef}>{cart.name}</h2>
-        <span><HiPencil className='pencil-icon'
-          onClick={() => setShowEdit(!showEdit)} /></span>
+        <span>
+          <HiPencil className='pencil-icon'
+            onClick={() => setShowEdit(!showEdit)} />
+        </span>
       </div>
 
       <div className="cart-items">

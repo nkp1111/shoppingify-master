@@ -1,9 +1,9 @@
 import React from 'react'
 import { BsCalendarRange } from 'react-icons/bs'
-import { CgArrowLongLeft } from 'react-icons/cg'
 import { format } from 'date-fns'
 
 import { foodByCategory } from '../../utils'
+import BackButton from '../BackButton'
 
 const DetailHistory = ({ showGroceryDetail, handleGroceryDetail }) => {
   const { item } = showGroceryDetail
@@ -12,10 +12,7 @@ const DetailHistory = ({ showGroceryDetail, handleGroceryDetail }) => {
   return (
     <>
       <div className='main__items-grocery'>
-        <button onClick={handleGroceryDetail}
-          className='d-flex align-items-center'>
-          <CgArrowLongLeft className='back-icon me-1' /> back
-        </button>
+        <BackButton function1={handleGroceryDetail} />
         <div className='grocery'>
           <h2>{item.name}</h2>
           <div className="d-flex align-items-center">
