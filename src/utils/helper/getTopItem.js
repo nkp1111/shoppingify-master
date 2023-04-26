@@ -5,22 +5,24 @@ const getTopItemAndCategory = (foodItems) => {
   let totalItem = 0
 
   for (let food of foodItems) {
-    for (let item of food.items) {
-      item.pieces = +item.pieces
-      const { name, category, pieces } = item
-      //  items 
-      if (items.hasOwnProperty(name)) {
-        items[name] += pieces
-      } else {
-        items[name] = pieces || 1
+    if (food.status === "completed") {
+      for (let item of food.items) {
+        item.pieces = +item.pieces
+        const { name, category, pieces } = item
+        //  items 
+        if (items.hasOwnProperty(name)) {
+          items[name] += pieces
+        } else {
+          items[name] = pieces || 1
+        }
+        // categories
+        if (categories.hasOwnProperty(category)) {
+          categories[category] += pieces
+        } else {
+          categories[category] = pieces || 1
+        }
+        totalItem += pieces
       }
-      // categories
-      if (categories.hasOwnProperty(category)) {
-        categories[category] += pieces
-      } else {
-        categories[category] = pieces || 1
-      }
-      totalItem += pieces
     }
   }
 

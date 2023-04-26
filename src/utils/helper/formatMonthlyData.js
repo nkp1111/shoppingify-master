@@ -14,8 +14,10 @@ const formatMonthlyData = (foodHistory) => {
     let month = time.split(" ")[0]
     let monthItems = 0
     for (let g of grocery[time]) {
-      for (let item of g.items) {
-        monthItems += item.pieces
+      if (g.status === "completed") {
+        for (let item of g.items) {
+          monthItems += item.pieces
+        }
       }
     }
     if (formattedMonth.hasOwnProperty(month)) {
