@@ -3,7 +3,7 @@ import { RxMagnifyingGlass, RxPlus } from 'react-icons/rx'
 
 import { foodByCategory } from '../../utils'
 import useGlobalContext from '../../context'
-
+import "./shoppingItem.css"
 
 const Index = () => {
 
@@ -44,7 +44,7 @@ const Index = () => {
                   if (!searchTerm || item.name.toLowerCase().match(searchTerm.toLowerCase())) {
                     return (
                       <div key={item.id}
-                        className='col-lg-3 col-md-4 col-6'>
+                        className='col-lg-3 col-6'>
                         {/* food product  */}
                         <div className="card flex-row align-items-center justify-content-between">
                           <p onClick={() => {

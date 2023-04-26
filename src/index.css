@@ -56,12 +56,15 @@ h6 {
   --blue: #56CCF2;
   --light-gray: #C1C1C4;
   --white: #FFFFFF;
+
+  --black: #000000;
   /* white button text  */
   --light-black: #34333A;
   /* right sidebar background  */
   --very-light-orange: #FFF0DE;
 
   --padding-y: 2rem;
+  --padding-x: 2rem;
 }
 
 body {
@@ -77,13 +80,10 @@ h4,
 h5,
 h6 {
   color: var(--light-black);
-  font-weight: 700;
+  font-weight: 600;
 }
 
-h1 {
-  font-size: 2rem;
-}
-
+h1,
 h2 {
   font-size: 1.5rem;
 }
