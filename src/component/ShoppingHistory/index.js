@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import ListHistory from './ListHistory'
 import DetailHistory from './DetailHistory'
+import "./shoppingHistory.css"
 
 const Index = () => {
   const [showGroceryDetail, setShowGroceryDetail] = useState({ show: false, item: null });
@@ -16,16 +17,15 @@ const Index = () => {
   }
 
   return (
-    <div className='main__content-items'>
-      <div className="items-header">
+    <div className='main__content-history'>
+      <div>
         <h1>Shopping history</h1>
       </div>
-      <div className='items-body'>
+      <div className='main__history-view'>
         {!showGroceryDetail?.show
           ? <ListHistory handleGroceryDetail={handleGroceryDetail} />
           : <DetailHistory {...{ showGroceryDetail, handleGroceryDetail }} />}
       </div>
-
     </div>
   )
 }

@@ -24,11 +24,11 @@ const ListHistory = ({ handleGroceryDetail }) => {
             <article className="card flex-row justify-content-between" key={gItem.id}>
               <h2 onClick={(e) => setGrocery(gItem)}>{gItem.name}</h2>
               <div className='d-flex align-items-center'>
-                <BsCalendarRange className='calendar-icon' />
-                <span className="item-date">
+                <BsCalendarRange className='calendar-icon me-2' />
+                <span className="item-date me-2">
                   {format(new Date(gItem.date), "EEE d.M.yyy")}
                 </span>
-                <button className={`${gItem.status} btn`}>{gItem.status}</button>
+                <button className={`${gItem.status} btn mx-4`}>{gItem.status}</button>
                 <FaChevronRight className='forward-icon' onClick={(e) => setGrocery(gItem)} />
               </div>
             </article>
