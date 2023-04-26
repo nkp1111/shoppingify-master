@@ -1,29 +1,34 @@
 import React from 'react'
 import { RiShoppingCart2Line } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 
 import { images } from '../../utils'
-import "./sidebar.css"
 import SidebarNav from './SidebarNav'
+import useGlobalContext from '../../context'
+import "./sidebar.css"
 
-const index = () => {
+const Index = () => {
+  const { state } = useGlobalContext()
   return (
     <div className='app__sidebar'>
       <nav className="navbar">
         <div className="container-fluid d-flex flex-column justify-content-between align-items-center">
           {/* logo */}
           <div className='app__sidebar-logo'>
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="/">
               <img src={images.logo} alt="logo" />
-            </a>
+            </Link>
           </div>
 
-          {/* shoppify items nav */}
+          {/* shoppingify items nav */}
           <SidebarNav />
 
           {/* cart items  */}
           <div className='app__sidebar-cart'>
-            <p className="item-num">4</p>
-            <RiShoppingCart2Line className='cart-icon' />
+            <p className="item-num">{state.cart.items.length}</p>
+            <div>
+              <RiShoppingCart2Line className='cart-icon' />
+            </div>
           </div>
         </div>
       </nav>
@@ -31,4 +36,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
