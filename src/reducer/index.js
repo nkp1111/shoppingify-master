@@ -40,7 +40,10 @@ const reducer = (state, action) => {
         done: false
       }
       const newCart = { ...state.cart, items: [...cartItems, newItem] }
-      return { ...state, cart: newCart }
+      return {
+        ...state,
+        cart: newCart
+      }
     }
   }
 
@@ -50,13 +53,25 @@ const reducer = (state, action) => {
     const itemToUpdate = oldCart.items.filter(item => item.id === id)[0]
     const restItems = oldCart.items.filter(item => item.id !== id)
     itemToUpdate.pieces = qty
-    return { ...state, cart: { ...oldCart, items: [...restItems, itemToUpdate] } }
+    return {
+      ...state,
+      cart: {
+        ...oldCart,
+        items: [...restItems, itemToUpdate]
+      }
+    }
   }
 
   if (type === "REMOVE_CART_ITEM") {
     let oldCart = state.cart
     const restItems = oldCart.items.filter(item => item.id !== payload)
-    return { ...state, cart: { ...oldCart, items: [...restItems] } }
+    return {
+      ...state,
+      cart: {
+        ...oldCart,
+        items: [...restItems]
+      }
+    }
   }
 
   if (type === "CART_ITEM_STATUS") {
@@ -65,13 +80,22 @@ const reducer = (state, action) => {
     const itemToUpdate = oldCart.items.filter(item => item.id === id)[0]
     const restItems = oldCart.items.filter(item => item.id !== id)
     itemToUpdate.done = newStatus
-    return { ...state, cart: { ...oldCart, items: [...restItems, itemToUpdate] } }
+    return {
+      ...state,
+      cart: {
+        ...oldCart,
+        items: [...restItems, itemToUpdate]
+      }
+    }
   }
 
   if (type === "CART_NAME_UPDATE") {
     const oldCart = state.cart
     oldCart.name = payload
-    return { ...state, cart: oldCart }
+    return {
+      ...state,
+      cart: oldCart
+    }
   }
 
   if (type === "ADD_NEW_ITEM") {
