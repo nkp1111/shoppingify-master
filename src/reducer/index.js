@@ -55,7 +55,6 @@ const reducer = (state, action) => {
     const { id, newStatus } = payload
     let oldCart = state.cart
     const itemToUpdate = oldCart.items.filter(item => item.id === id)[0]
-    console.log(itemToUpdate)
     const restItems = oldCart.items.filter(item => item.id !== id)
     itemToUpdate.done = newStatus
     return { ...state, cart: { ...oldCart, items: [...restItems, itemToUpdate] } }
