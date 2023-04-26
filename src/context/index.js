@@ -53,21 +53,18 @@ const AppProvider = ({ children }) => {
   const changeCartName = (name) => {
     // change cart name
     dispatch({ type: "CART_NAME_UPDATE", payload: name })
-    updateLocalStorage(state)
   }
 
   const shoppingEnded = (result) => {
     // after shopping ended update status and empty cart
     dispatch({ type: "EMPTY_CART", payload: result })
     setShowModal(false)
-    updateLocalStorage(state)
   }
 
   const addNewItem = (item) => {
     // add new item to the grocery list and also to the cart
     dispatch({ type: "ADD_NEW_ITEM", payload: item })
     addItemToCart(item)
-    updateLocalStorage(state)
   }
 
   useEffect(() => {
@@ -85,7 +82,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     // update local storage every time cart item changes
     updateLocalStorage(state)
-  }, [state.cart.items]);
+  }, [state]);
 
   useEffect(() => {
     // to check state changes on development

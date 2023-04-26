@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { RxMagnifyingGlass, RxPlus } from 'react-icons/rx'
 
 import { foodByCategory } from '../../utils'
@@ -7,6 +7,7 @@ import useGlobalContext from '../../context'
 
 const Index = () => {
 
+  const [searchTerm, setSearchTerm] = useState("");
   const { state: { foodItems }, addItemToCart, setShowItemDetail } = useGlobalContext()
   let itemsToShow = foodByCategory({ foodItems })
 
@@ -18,14 +19,16 @@ const Index = () => {
         </h1>
         <form>
           <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">
+            <span className="input-group-text" id="search-icon">
               <RxMagnifyingGlass className='mag-icon' />
             </span>
             <input type="text"
               className="form-control"
               placeholder="search item"
               aria-label="search item"
-              aria-describedby="basic-addon1" />
+              aria-describedby="search-icon"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} />
           </div>
         </form>
       </div>
@@ -37,21 +40,27 @@ const Index = () => {
             <h2>{category}</h2>
             <div className="container">
               <div className="row">
-                {itemsToShow[category].map(item => (
-                  <div key={item.id}
-                    className='col-lg-3 col-md-4 col-6'>
-                    {/* food product  */}
-                    <div className="card flex-row align-items-center justify-content-between">
-                      <p onClick={() => {
-                        setShowItemDetail({ show: true, item: item })
-                      }}>{item.name}</p>
-                      <div>
-                        <RxPlus className='plus-icon'
-                          onClick={(e) => addItemToCart(item)} />
+                {itemsToShow[category].map(item => {
+                  if (!searchTerm || item.name.toLowerCase().match(searchTerm.toLowerCase())) {
+                    return (
+                      <div key={item.id}
+                        className='col-lg-3 col-md-4 col-6'>
+                        {/* food product  */}
+                        <div className="card flex-row align-items-center justify-content-between">
+                          <p onClick={() => {
+                            setShowItemDetail({ show: true, item: item })
+                          }}>{item.name}</p>
+                          <div>
+                            <RxPlus className='plus-icon'
+                              onClick={(e) => addItemToCart(item)} />
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
+                    )
+                  } else {
+                    return null
+                  }
+                })}
               </div>
             </div>
           </div>
