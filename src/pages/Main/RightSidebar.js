@@ -1,11 +1,17 @@
 import React from 'react'
 
-import { Cart } from '../../component'
+import { Cart, SidebarItem } from '../../component'
+import useGlobalContext from '../../context'
 
 const RightSidebar = () => {
+  const { showItemDetail, showAddItemForm } = useGlobalContext()
   return (
     <div className='app__main-sidebar'>
-      <Cart />
+      <section className='h-100'>
+        {showAddItemForm || showItemDetail.show
+          ? <SidebarItem />
+          : <Cart />}
+      </section>
     </div>
   )
 }
