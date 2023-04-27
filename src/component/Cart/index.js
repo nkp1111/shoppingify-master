@@ -50,7 +50,7 @@ const Cart = () => {
         {showEdit
           ? (
             <div className='btn-holder d-flex'>
-              <button className="btn"
+              <button className="btn cancel-btn"
                 onClick={() => setShowModal(true)}>cancel</button>
               <button className="btn"
                 onClick={() => shoppingEnded("completed")}>Complete</button>

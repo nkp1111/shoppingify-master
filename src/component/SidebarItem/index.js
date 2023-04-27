@@ -3,6 +3,7 @@ import React from 'react'
 import CartItemDetail from './CartItemDetail'
 import AddItemForm from './AddItemForm'
 import useGlobalContext from '../../context'
+import "./sidebarItem.css"
 
 const Index = () => {
 
