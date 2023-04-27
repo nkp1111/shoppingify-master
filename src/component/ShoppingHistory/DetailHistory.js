@@ -13,11 +13,11 @@ const DetailHistory = ({ showGroceryDetail, handleGroceryDetail }) => {
     <>
       <div className='main__items-grocery'>
         <BackButton function1={handleGroceryDetail} />
-        <div className='grocery'>
+        <div>
           <h2>{item.name}</h2>
-          <div className="d-flex align-items-center">
-            <BsCalendarRange className='calendar-icon' />
-            <span className="grocery-date">
+          <div className="d-flex align-items-center grocery-date">
+            <BsCalendarRange className='calendar-icon me-2' />
+            <span>
               {format(new Date(item.date), "EEE d.M.yyy")}
             </span>
           </div>
@@ -26,9 +26,9 @@ const DetailHistory = ({ showGroceryDetail, handleGroceryDetail }) => {
               <h3 className='grocery-category'>{item}</h3>
               <div className="d-flex gap-3">
                 {itemToShow[item].map(gItem => (
-                  <div className="card flex-row" key={gItem.name}>
+                  <div className="card flex-row align-items-center" key={gItem.name}>
                     <p className='grocery-name me-2'>{gItem.name}</p>
-                    <p className='grocery-qty'>{gItem.pieces} pcs</p>
+                    <p className='grocery-qty'>{gItem.pieces}pcs</p>
                   </div>
                 ))}
               </div>
