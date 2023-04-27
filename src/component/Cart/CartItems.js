@@ -71,9 +71,10 @@ const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit, searchTe
             <div className="d-flex flex-column">
               {cartItemsByCategory[category].map(item => (
                 <div
-                  className={`mb-3 d-flex align-items-center 
+                  className={`single-cart-item mb-3 d-flex align-items-center 
                   search-${searchTerm && item.name.toLowerCase().match(searchTerm.toLowerCase()) && "match"}`}
                   key={item.id}>
+                  {/* check box show only on edit mode  */}
                   {showEdit && (
                     <div className='position-relative input-holder me-3'>
                       {/* change single shopping item status  */}
@@ -86,8 +87,10 @@ const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit, searchTe
                       </span>
                     </div>
                   )}
+                  {/* cart item  */}
                   <label htmlFor={`done-${item.id}`}
                     className={`${cartItemStatus[item.id] && "text-decoration-line-through"}`}>{item.name}</label>
+                  {/* control box for changing quantity and removing item  */}
                   <CartItemControl item={item} qtys={cartItemQtys} />
                 </div>
               ))}
