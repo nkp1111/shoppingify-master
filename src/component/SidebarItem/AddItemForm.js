@@ -42,6 +42,7 @@ const AddItemForm = () => {
         description: note,
       }
       addNewItem(newItem)
+      handleForm()
     }
 
   }

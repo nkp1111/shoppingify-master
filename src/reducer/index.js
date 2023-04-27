@@ -1,3 +1,9 @@
+import toast from 'react-hot-toast'
+
+import { toasterStyles } from '../utils'
+
+const { successStyle, errorStyle } = toasterStyles
+
 const reducer = (state, action) => {
   const { type, payload } = action
 
@@ -13,6 +19,11 @@ const reducer = (state, action) => {
     const todayDate = new Date()
     let oldCart = state.cart
     oldCart.status = payload
+    if (payload === "completed") {
+      toast(`Shopping Completed...`, { style: successStyle })
+    } else {
+      toast(`Shopping Cancelled!!!`, { style: errorStyle })
+    }
     const newState = {
       ...state,
       foodHistory: [...state.foodHistory, oldCart],
@@ -40,6 +51,7 @@ const reducer = (state, action) => {
         done: false
       }
       const newCart = { ...state.cart, items: [...cartItems, newItem] }
+      toast(`New item added to cart, ${payload.name}`, { style: successStyle })
       return {
         ...state,
         cart: newCart
@@ -65,6 +77,7 @@ const reducer = (state, action) => {
   if (type === "REMOVE_CART_ITEM") {
     let oldCart = state.cart
     const restItems = oldCart.items.filter(item => item.id !== payload)
+    toast(`Item removed from cart`, { style: errorStyle })
     return {
       ...state,
       cart: {
@@ -99,9 +112,14 @@ const reducer = (state, action) => {
   }
 
   if (type === "ADD_NEW_ITEM") {
-    return {
-      ...state,
-      foodItems: [...state.foodItems, payload]
+    let duplicateItem = state.foodItems.filter(item => item.name === payload.name && item.category === payload.category)
+
+    if (duplicateItem.length === 0) {
+      toast("New Item Added", { style: successStyle })
+      return {
+        ...state,
+        foodItems: [...state.foodItems, payload]
+      }
     }
   }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 
 import { Sidebar, Main } from './pages'
 import { Modal } from './component'
@@ -10,6 +11,7 @@ const App = () => {
   const { showModal } = useGlobalContext()
   return (
     <div className='app d-flex'>
+      <Toaster />
       <Router>
         <Sidebar />
         <Main />
