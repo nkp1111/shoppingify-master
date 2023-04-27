@@ -56,7 +56,7 @@ h6 {
   --blue: #56CCF2;
   --light-gray: #C1C1C4;
   --white: #FFFFFF;
-
+  --ver-light-red: #E0E0E0;
   --black: #000000;
   /* white button text  */
   --light-black: #34333A;
@@ -71,6 +71,7 @@ body {
   font-family: var(--base-font), sans-serif;
   font-size: 18px;
   font-weight: 500;
+  color: var(--black);
 }
 
 h1,
@@ -79,7 +80,6 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--light-black);
   font-weight: 600;
 }
 
@@ -90,6 +90,7 @@ h2 {
 
 h1 {
   margin-bottom: 1rem;
+  color: var(--light-black);
 }
 
 button.btn {

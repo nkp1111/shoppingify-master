@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 import { getTopItem, formatMonthlyData } from '../../utils'
 import useGlobalContext from '../../context'
-
+import "./shoppingStats.css"
 
 const getPercent = (count, total) => Math.floor(count / total * 100)
 
@@ -17,6 +17,19 @@ const Index = () => {
     { title: "Top Categories", items: categories, top3: topCategories, customClass: "top-cat" }
   ]
   const formattedGrocery = formatMonthlyData(foodHistory)
+
+  const showProgressBar = () => {
+    // show progress bar according to percent
+    const progressToShow = document.querySelectorAll(".progress-show")
+    for (let progress of progressToShow) {
+      const percent = progress.classList[2].split("-")[1]
+      progress.style.width = `${percent}%`
+    }
+  }
+
+  useEffect(() => {
+    showProgressBar()
+  });
 
   return (
     <div className='main__content-stats'>
@@ -35,7 +48,9 @@ const Index = () => {
                       <li key={item} className='d-flex justify-content-between flex-wrap'>
                         <span>{item}</span>
                         <span>{percent}%</span>
-                        <span className={`w-100 d-block progress-bar progress-${percent}`}></span>
+                        <div className='progress-bar w-100'>
+                          <span className={`d-block progress-show progress-${percent}`} />
+                        </div>
                       </li>
                     )
                   })}
