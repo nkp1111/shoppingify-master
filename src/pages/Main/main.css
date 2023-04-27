@@ -13,7 +13,6 @@ main>div {
   height: 100vh;
 }
 
-
 /* hide scroll bar for elements  */
 .app__main-content::-webkit-scrollbar,
 .app__main-sidebar::-webkit-scrollbar {
@@ -32,4 +31,10 @@ main>div {
   background: var(--very-light-orange);
   width: 30vw;
   box-shadow: -1px 0 10px var(--very-light-orange);
+}
+
+@media screen and (max-width:60rem) {
+  .app__main-sidebar {
+    display: none;
+  }
 }
