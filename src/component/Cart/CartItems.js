@@ -55,7 +55,7 @@ const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit, searchTe
 
   return (
     <section className='main__cart-items w-100'>
-      <div className='cart-title d-flex align-items-center justify-content-between'>
+      <div className='cart-title d-flex align-items-center justify-content-between mt-1'>
         <h2 className='me-1'
           ref={headingRef}>{cart.name}</h2>
         <span>
@@ -71,10 +71,11 @@ const CartItems = ({ state: { cart, foodItems }, showEdit, setShowEdit, searchTe
             <div className="d-flex flex-column">
               {cartItemsByCategory[category].map(item => (
                 <div
-                  className={`d-flex align-items-center search-${searchTerm && item.name.toLowerCase().match(searchTerm.toLowerCase()) && "match"}`}
+                  className={`mb-3 d-flex align-items-center 
+                  search-${searchTerm && item.name.toLowerCase().match(searchTerm.toLowerCase()) && "match"}`}
                   key={item.id}>
                   {showEdit && (
-                    <div className='position-relative input-holder'>
+                    <div className='position-relative input-holder me-3'>
                       {/* change single shopping item status  */}
                       <input type="checkbox" id={`done-${item.id}`} className='visually-hidden'
                         onChange={(e) => itemStatusUpdate(item.id, !cartItemStatus[item.id])} />

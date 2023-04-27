@@ -11,7 +11,6 @@ main>div {
 .app__main-content,
 .app__main-sidebar {
   height: 100vh;
-  overflow: scroll;
 }
 
 
@@ -25,6 +24,7 @@ main>div {
 .app__main-content {
   flex: 1;
   padding: var(--padding-y) var(--padding-x);
+  overflow: scroll;
 }
 
 /* main right sidebar  */
