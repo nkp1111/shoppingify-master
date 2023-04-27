@@ -39,7 +39,7 @@ const Index = () => {
             const { title, items, customClass, top3 } = data
 
             return (
-              <article className={`col-sm-6 ${customClass}`} key={title}>
+              <article className={`col-md-6 col-12 ${customClass}`} key={title}>
                 <h2>{title}</h2>
                 <ul>
                   {top3.map(item => {
@@ -64,7 +64,7 @@ const Index = () => {
       <section>
         <h2>Monthly Summary</h2>
         <div>
-          <LineChart width={600} height={300} data={formattedGrocery} margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
+          <LineChart width={600} height={300} data={formattedGrocery} >
             <Line type="monotone" dataKey="items" stroke="#F9A109" />
             <CartesianGrid stroke="#E0E0E0" />
             <XAxis dataKey="name" />
