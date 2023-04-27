@@ -12,8 +12,8 @@ main>div {
 .app__main-sidebar {
   height: 100vh;
   overflow: scroll;
-  padding: var(--padding-y) var(--padding-x);
 }
+
 
 /* hide scroll bar for elements  */
 .app__main-content::-webkit-scrollbar,
@@ -24,6 +24,7 @@ main>div {
 /* main pages  */
 .app__main-content {
   flex: 1;
+  padding: var(--padding-y) var(--padding-x);
 }
 
 /* main right sidebar  */
