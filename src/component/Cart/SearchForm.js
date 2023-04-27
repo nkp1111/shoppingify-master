@@ -15,7 +15,7 @@ const SearchForm = ({ empty, searchTerm, setSearchTerm }) => {
   }
 
   return (
-    <form className={`cart-${empty} d-flex`} onSubmit={handleSubmitFind}>
+    <form className={`cart-${empty && "empty"} d-flex`} onSubmit={handleSubmitFind}>
       <div>
         <label htmlFor="name"
           className="form-label visually-hidden">Password</label>
@@ -28,7 +28,7 @@ const SearchForm = ({ empty, searchTerm, setSearchTerm }) => {
           onChange={(e) => setSearchTerm(e.target.value)} />
       </div>
 
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <button type="submit" className="btn">Save</button>
     </form>
   )
 }

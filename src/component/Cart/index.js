@@ -24,7 +24,7 @@ const Cart = () => {
       <div className='cart-header d-flex'>
         <div className="cart-content order-2">
           <h2>Didn’t find what you need?</h2>
-          <button className='btn'
+          <button className='btn bg-white'
             onClick={() => setShowAddItemForm(true)}>Add item</button>
         </div>
         <div className="cart-image">
@@ -44,7 +44,7 @@ const Cart = () => {
         )
         : <CartItems state={state} showEdit={showEdit} setShowEdit={setShowEdit} searchTerm={searchTerm} />}
 
-      <div className="cart-footer mt-auto">
+      <div className="cart-footer mt-auto w-100">
         {showEdit
           ? (
             <div className='btn-holder d-flex'>
