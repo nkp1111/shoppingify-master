@@ -6,12 +6,12 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
-      Demo
+    <a href="https://shoppingify-master-git-main-nkp1111.vercel.app/">
+      Live App
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
-      Solution
+    <a href="https://github.com/nkp1111/shoppingify-master">
+      GitHub
     </a>
     <span> | </span>
     <a href="https://devchallenges.io/challenges/mGd5VpbO4JnzU6I9l96x">
@@ -31,7 +31,7 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](./src/assets/Screenshot%202023-04-27%20192425.png)
 
 ### Built With
 

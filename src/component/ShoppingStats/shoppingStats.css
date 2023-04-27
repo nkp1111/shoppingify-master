@@ -29,6 +29,11 @@
   background-color: var(--blue);
 }
 
+.top-cat ul,
+.top-items ul {
+  padding: 0;
+}
+
 .progress-bar .progress-show {
   position: absolute;
   top: 0;
@@ -37,7 +42,7 @@
   border-radius: 0.5rem;
 }
 
-@media screen and (max-width: 69.375rem) and (min-width:955px) {
+@media screen and (max-width: 69.375rem) and (min-width:59.6875rem) {
 
   .recharts-wrapper {
     width: 500px !important;
