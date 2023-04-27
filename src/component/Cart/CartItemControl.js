@@ -17,19 +17,28 @@ const CartItemControl = ({ item, qtys }) => {
       {showQtyControl
         ? (
           <div className='bg-white d-flex align-items-center justify-content-between gap-1'>
-            <div>
-              <AiOutlineDelete className='delete-icon'
-                onClick={() => removeCartItem(item.id)} />
+            {/* delete button  */}
+            <div className='delete-btn'
+              onClick={() => removeCartItem(item.id)}>
+              <AiOutlineDelete className='delete-icon' />
             </div>
-            <AiOutlineMinus onClick={(e) => {
-              if (qty > 1) {
-                updateItemQuantity({ id: item.id, qty: +qty - 1 })
-              }
-            }} />
+
+            {/* decrease item count  */}
+            <AiOutlineMinus className='minus-icon'
+              onClick={(e) => {
+                if (qty > 1) {
+                  updateItemQuantity({ id: item.id, qty: +qty - 1 })
+                }
+              }} />
+
+            {/* toggle control box  */}
             <ControlButton {...{ qty, handleQtyControl, showQtyControl }} />
-            <AiOutlinePlus onClick={(e) => updateItemQuantity({ id: item.id, qty: +qty + 1 })} />
+
+            {/* increase item count  */}
+            <AiOutlinePlus className='plus-icon' onClick={(e) => updateItemQuantity({ id: item.id, qty: +qty + 1 })} />
           </div>
         )
+        // toggle control box 
         : <ControlButton {...{ qty, handleQtyControl, showQtyControl }} />}
     </div>
   )
@@ -37,7 +46,7 @@ const CartItemControl = ({ item, qtys }) => {
 
 const ControlButton = ({ qty, handleQtyControl, showQtyControl }) => {
   return (
-    <button
+    <button className='btn'
       onClick={(e) => handleQtyControl(showQtyControl)}>{qty} pcs
     </button>
   )
