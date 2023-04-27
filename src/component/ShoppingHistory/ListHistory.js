@@ -21,7 +21,7 @@ const ListHistory = ({ handleGroceryDetail }) => {
         <div className='items-month' key={item}>
           <p>{item}</p>
           {formattedGrocery[item].map(gItem => (
-            <article className="card flex-row justify-content-between" key={gItem.id}>
+            <article className="card justify-content-between" key={gItem.id}>
               <h2 onClick={(e) => setGrocery(gItem)}>{gItem.name}</h2>
               <div className='d-flex align-items-center'>
                 <BsCalendarRange className='calendar-icon me-2' />
