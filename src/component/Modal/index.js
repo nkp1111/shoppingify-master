@@ -17,7 +17,7 @@ const Index = () => {
         <div className="btn-holder d-flex justify-content-end">
           <button className="btn cancel-btn"
             onClick={() => setShowModal(false)}>cancel</button>
-          <button className="btn" onClick={() => shoppingEnded("cancelled")}>Yes</button>
+          <button className="btn ms-3" onClick={() => shoppingEnded("cancelled")}>Yes</button>
         </div>
       </div>
     </div>
