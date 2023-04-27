@@ -84,11 +84,6 @@ const AppProvider = ({ children }) => {
     updateLocalStorage(state)
   }, [state]);
 
-  useEffect(() => {
-    // to check state changes on development
-    console.log(state)
-  }, [state]);
-
   return (
     <AppContext.Provider
       value={{
